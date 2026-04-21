@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Projetos Escolares</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Gestão de Projetos Escolares</h1>
+        <nav>
+            <button onclick="mostrarTela('listagem')">Listar Projetos</button>
+            <button onclick="mostrarTela('cadastro')">Novo Projeto</button>
+        </nav>
+        <div id="status-usuario"></div>
+    </header>
+
+    <main>
+        <section id="tela-listagem">
+            <h2>Projetos Cadastrados</h2>
+            <table id="tabela-projetos">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Responsável</th>
+                        <th>Prazo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="corpo-tabela"></tbody>
+            </table>
+        </section>
+
+        <section id="tela-cadastro" style="display: none;">
+            <h2 id="titulo-formulario">Cadastrar Novo Projeto</h2>
+            <form id="form-projeto">
+                <input type="hidden" id="projeto-id">
+                
+                <div class="campo">
+                    <label>Título do Projeto:</label>
+                    <input type="text" id="titulo" required>
+                </div>
+
+                <div class="campo">
+                    <label>Responsável:</label>
+                    <input type="text" id="responsavel" required>
+                </div>
+
+                <div class="campo">
+                    <label>Prazo:</label>
+                    <input type="date" id="prazo" required>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit" id="btn-salvar">Salvar Projeto</button>
+                    <button type="button" onclick="mostrarTela('listagem')">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
