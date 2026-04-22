@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Acadêmica - Henrique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Portal de Projetos (Task 6 & 7)</h1>
+        <nav>
+            <button onclick="navegar('lista')">Lista de Projetos</button>
+            <button onclick="navegar('cadastro')">Cadastrar Novo Projeto</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="sec-lista">
+            <h2>Projetos Cadastrados</h2>
+            
+            <div class="filtros-container" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <input type="text" id="busca-geral" placeholder="Buscar por ID, Tema ou Professor..." oninput="renderizarTabela()" style="flex: 1; padding: 8px;">
+                
+                <select id="filtro-curso-select" onchange="renderizarTabela()" style="padding: 8px;">
+                    <option value="todos">Todos os Cursos</option>
+                </select>
+            </div>
+
+            <table border="1" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID Projeto</th>
+                        <th>Tema</th>
+                        <th>Descrição (50 chars)</th>
+                        <th>Curso / Período</th>
+                        <th>Professor</th>
+                        <th>Membros</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-projetos"></tbody>
+            </table>
+        </section>
+
+        <section id="sec-cadastro" style="display:none;">
+            <h2 id="titulo-form">Cadastro de Projeto</h2>
+            <form id="form-projeto">
+                <input type="hidden" id="modo-edicao" value="false">
+                <input type="hidden" id="id-original">
+                
+                <div class="campo">
+                    <label>ID do Projeto (Único):</label><br>
+                    <input type="text" id="p-id-projeto" required>
+                </div>
+
+                <div class="campo">
+                    <label>Tema (Título - Mín. 5 chars):</label><br>
+                    <input type="text" id="p-tema" required minlength="5">
+                </div>
+
+                <div class="campo">
+                    <label>Descrição (Mín. 10 chars):</label><br>
+                    <textarea id="p-desc" required minlength="10"></textarea>
+                </div>
+
+                <div class="campo">
+                    <label>Curso:</label><br>
+                    <input type="text" id="p-curso" required>
+                </div>
+
+                <div class="campo">
+                    <label>Período:</label><br>
+                    <input type="text" id="p-periodo" required>
+                </div>
+
+                <div class="campo">
+                    <label>Professor Orientador:</label><br>
+                    <select id="p-professor" required>
+                        <option value="">Selecione...</option>
+                        <option value="Prof. James">Prof. James</option>
+                        <option value="Prof. Marcelo">Prof. Marcelo</option>
+                        <option value="Prof. Romulo">Prof. Romulo</option>
+                        <option value="Prof. Mikael">Prof. Mikael</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Membros (2 a 6 alunos):</label><br>
+                    <textarea id="p-membros" required placeholder="Nomes separados por vírgula"></textarea>
+                </div>
+
+                <div class="botoes" style="margin-top: 15px;">
+                    <button type="submit">Salvar Projeto</button>
+                    <button type="button" onclick="navegar('lista')">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
